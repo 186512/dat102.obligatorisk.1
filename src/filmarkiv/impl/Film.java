@@ -1,6 +1,5 @@
 package filmarkiv.impl;
 
-import java.util.Objects;
 
 public class Film {
 	
