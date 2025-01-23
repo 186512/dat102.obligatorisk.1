@@ -4,11 +4,47 @@ import filmarkiv.impl.Film;
 import static javax.swing.JOptionPane.*;
 import filmarkiv.adt.FilmarkivADT;
 import filmarkiv.impl.Filmarkiv;
+import filmarkiv.impl.Sjanger;
 
 public class Tekstgrensesnitt {
 
 	// Leser inn opplysninger om en film fra tastatur og returnere et Film-objekt
 	public Film lesFilm() {
+		
+		String NyFilmNr = showInputDialog("skriv inn filmnummeret");
+		String NyFilmSkaper = showInputDialog("skriv inn Filmskaperen");
+		String NyFilmTittel = showInputDialog("skriv inn filmnummeret");
+		String NyFilmLansering = showInputDialog("skriv inn Lanserings år");
+		String NyFilmSelskap = showInputDialog("skriv inn Filmselskapet");
+		
+		 Sjanger[] sjangere = Sjanger.values();
+		Sjanger nyFilmSjanger = (Sjanger) showInputDialog(
+                null,
+                "Velg en filmsjanger:",
+                "Filmsjanger",
+                QUESTION_MESSAGE,
+                null,
+                sjangere,
+                sjangere[0] 
+        );
+
+       
+        if (nyFilmSjanger != null) {
+            System.out.println("Valgt sjanger: " + nyFilmSjanger);
+        } else {
+            System.out.println("Ingen sjanger ble valgt.");
+        }
+    
+		String nyFilmSelskap = showInputDialog("skriv inn Filmselskapet");
+		
+		int nyttNr = Integer.parseInt(NyFilmNr);
+		int nylansering = Integer.parseInt(NyFilmLansering);
+		
+		
+		Film nyFilm = new Film(nyttNr, NyFilmSkaper, NyFilmTittel,nylansering, nyFilmSjanger, nyFilmSelskap);
+	
+	
+	return nyFilm; 
 		
 	}
 
