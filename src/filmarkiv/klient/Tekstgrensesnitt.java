@@ -8,14 +8,11 @@ import filmarkiv.impl.Sjanger;
 
 public class Tekstgrensesnitt {
 
-	// Leser inn opplysninger om en film fra tastatur og returnere et Film-objekt
 	public Film lesFilm() {
-		
 		String NyFilmNr = showInputDialog("skriv inn filmnummeret");
 		String NyFilmSkaper = showInputDialog("skriv inn Filmskaperen");
 		String NyFilmTittel = showInputDialog("skriv inn filmnummeret");
 		String NyFilmLansering = showInputDialog("skriv inn Lanserings år");
-		String NyFilmSelskap = showInputDialog("skriv inn Filmselskapet");
 		
 		 Sjanger[] sjangere = Sjanger.values();
 		Sjanger nyFilmSjanger = (Sjanger) showInputDialog(
@@ -45,47 +42,57 @@ public class Tekstgrensesnitt {
 	
 	
 	return nyFilm; 
-		
 	}
 
 	// Skriver ut en film med alle opplysninger på skjerm (husk tekst for sjanger)
 	public void skrivUtFilm(Film film) {
-		String strValg = showInputDialog("Velg hva du vil søke ette\n1: Produsent\n2: Tittel");
-		int valg = Integer.parseInt(strValg);
-		if (valg == 1) {
-			String prodValgStr = showInputDialog("Søk etter produsent:");
-			if (film.getProdusent().equalsIgnoreCase(prodValgStr)) {
-	            showMessageDialog(null, "Film funnet:\n" + film.toString());
-	        } else {
-	            showMessageDialog(null, "Ingen filmer funnet for produsenten: " + prodValgStr);
-	        }
-
-	    } else if (valg == 2) {
-	        String tittelValgStr = showInputDialog("Søk etter tittel:");
-
-	        // Sammenligne tittelen til 'film' med brukerens input
-	        if (film.getTittel().equalsIgnoreCase(tittelValgStr)) {
-	            showMessageDialog(null, "Film funnet:\n" + film.toString());
-	        } else {
-	            showMessageDialog(null, "Ingen filmer funnet med tittelen: " + tittelValgStr);
-	        }
-		}
+		System.out.println("Filmdetaljer:");
+		System.out.println("Tittel: " + film.getTittel());
+		System.out.println("Produsent: " + film.getProdusent());
+		System.out.println("Lanseringsår: " + film.getLanseringsår());
+		System.out.println("Sjanger: " + film.getSjanger());
+		System.out.println("Filmselskap: " + film.getFilmselskap());
 	}
 
 	// Skriver ut alle filmer med en spesiell delstreng i tittelen
 	public void skrivUtFilmDelstrengITittel(FilmarkivADT arkiv, String delstreng) {
-		// TODO
+		 Film[] funnetFilmer = arkiv.soekTittel(delstreng);
+		 if (funnetFilmer.length > 0) {
+		        System.out.println("Filmer som inneholder '" + delstreng + "' i tittelen:");
+		        for (Film film : funnetFilmer) {
+		            skrivUtFilm(film);
+		        }
+		    } else {
+		        System.out.println("Ingen filmer funnet med den angitte delstrengen.");
+		    }
 	}
 
 	// Skriver ut alle Filmer av en produsent (produsent er delstreng)
 	public void skrivUtFilmProdusent(FilmarkivADT arkiv, String delstreng) {
-		// TODO
+	    Film[] funnetFilmer = arkiv.soekProdusent(delstreng);
+
+	    if (funnetFilmer.length > 0) {
+	        System.out.println("Filmer produsert av: " + delstreng);
+	        for (Film film : funnetFilmer) {
+	            skrivUtFilm(film); 
+	        }
+	    } else {
+	        System.out.println("Ingen filmer funnet med den angitte produsenten.");
+	    }
 	}
 
 	// Skriver ut en enkel statistikk som inneholder antall filmer totalt
 	// og hvor mange det er i hver sjanger.
 	public void skrivUtStatistikk(FilmarkivADT arkiv) {
-		// TODO
+		int totalAntallFilmer = arkiv.antall();
+		System.out.println("Totalt antall filmer: " + totalAntallFilmer);
+		
+		Sjanger[] alleSjangre = Sjanger.values();
+		
+		for (Sjanger sjanger : alleSjangre) {
+	        int antallISjanger = arkiv.antall(sjanger);
+	        System.out.println(sjanger + ": " + antallISjanger);
+	    }
 	}
 	// osv ... andre metoder
 }
