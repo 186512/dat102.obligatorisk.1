@@ -15,9 +15,8 @@ public class Tekstgrensesnitt {
 		String NyFilmSkaper = showInputDialog("skriv inn Filmskaperen");
 		String NyFilmTittel = showInputDialog("skriv inn filmnummeret");
 		String NyFilmLansering = showInputDialog("skriv inn Lanserings år");
-		String NyFilmSelskap = showInputDialog("skriv inn Filmselskapet");
-		
-		 Sjanger[] sjangere = Sjanger.values();
+		¨
+		Sjanger[] sjangere = Sjanger.values();
 		Sjanger nyFilmSjanger = (Sjanger) showInputDialog(
                 null,
                 "Velg en filmsjanger:",
