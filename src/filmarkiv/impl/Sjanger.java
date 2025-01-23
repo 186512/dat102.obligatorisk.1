@@ -1,9 +1,8 @@
 package filmarkiv.impl;
 
 public enum Sjanger {
-	ACTION, DRAMA, HISTORY, SCIFI, HORROR, COMEDY, ROMANCE;
-	
-	
+	ACTION, SCIFI, COMEDY, DRAMA, ROMANCE;
+
 	public static Sjanger finnSjanger(String navn) {
 		for (Sjanger s : Sjanger.values()) {
 			if (s.toString().equals(navn.toUpperCase())) {
@@ -12,4 +11,7 @@ public enum Sjanger {
 		}
 		return null;
 	}
+
+	Sjanger[] sjangTab = Sjanger.values();
+	int lengde = Sjanger.values().length;
 }

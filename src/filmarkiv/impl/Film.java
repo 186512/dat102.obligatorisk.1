@@ -3,69 +3,62 @@ package filmarkiv.impl;
 import java.util.Objects;
 
 public class Film {
-	
-	private int filmNr;
-	private String filmSkaper;
-	private String filmTittel;
-	private int lansering;
+
+	private int filmnr;
+	private String produsent;
+	private String tittel;
+	private int lanseringsår;
 	private Sjanger sjanger;
 	private String filmselskap;
-	
+
 	public Film() {
-		
-		this.filmNr = 0;
-		this.filmSkaper = "";
-		this.filmTittel = "";
+		this.filmnr = 0;
+		this.produsent = "";
+		this.tittel = "";
+		this.lanseringsår = 0;
 		this.sjanger = null;
-		this.lansering = 0;
 		this.filmselskap = "";
-		
 	}
-	
-	
-	public Film(int filmNr, String filmSkaper, String filmTittel, Sjanger sjanger, int lansering, String filmselskap) {
-		
-		this.filmNr = filmNr;
-		this.filmSkaper = filmSkaper;
-		this.filmTittel = filmTittel;
+
+	public Film(int filmnr, String produsent, String tittel, int lanseringsår, Sjanger sjanger, String filmselskap) {
+		this.filmnr = filmnr;
+		this.produsent = produsent;
+		this.tittel = tittel;
+		this.lanseringsår = lanseringsår;
 		this.sjanger = sjanger;
-		this.lansering = lansering;
 		this.filmselskap = filmselskap;
-		
-	}
-	
-	
-
-	public int getFilmNr() {
-		return filmNr;
 	}
 
-	public void setFilmNr(int filmNr) {
-		this.filmNr = filmNr;
+	public int getFilmnr() {
+		return filmnr;
 	}
 
-	public String getFilmSkaper() {
-		return filmSkaper;
+	public void setFilmnr(int filmnr) {
+		this.filmnr = filmnr;
 	}
 
-	public void setFilmSkaper(String filmSkaper) {
-		this.filmSkaper = filmSkaper;
+	public String getProdusent() {
+		return produsent;
 	}
 
-	public String getFilmTittel() {
-		return filmTittel;
+	public void setProdusent(String produsent) {
+		this.produsent = produsent;
 	}
 
-	public void setFilmTittel(String filmTittel) {
-		this.filmTittel = filmTittel;
+	public String getTittel() {
+		return tittel;
 	}
 
-	public int getLansering() {
-		return lansering;
+	public void setTittel(String tittel) {
+		this.tittel = tittel;
 	}
 
-	public void setLansering(int lansering) {
-		this.lansering = lansering;
+	public int getLanseringsår() {
+		return lanseringsår;
+	}
+
+	public void setLanseringsår(int lanseringsår) {
+		this.lanseringsår = lanseringsår;
 	}
 
 	public Sjanger getSjanger() {
@@ -84,12 +77,10 @@ public class Film {
 		this.filmselskap = filmselskap;
 	}
 
-
 	@Override
 	public int hashCode() {
-		return Objects.hash(filmNr, filmSkaper, filmTittel, filmselskap, lansering, sjanger);
+		return Objects.hash(filmnr, filmselskap, lanseringsår, produsent, sjanger, tittel);
 	}
-
 
 	@Override
 	public boolean equals(Object obj) {
@@ -100,12 +91,9 @@ public class Film {
 		if (getClass() != obj.getClass())
 			return false;
 		Film other = (Film) obj;
-		return filmNr == other.filmNr && Objects.equals(filmSkaper, other.filmSkaper)
-				&& Objects.equals(filmTittel, other.filmTittel) && Objects.equals(filmselskap, other.filmselskap)
-				&& lansering == other.lansering && sjanger == other.sjanger;
+		return filmnr == other.filmnr && Objects.equals(filmselskap, other.filmselskap)
+				&& lanseringsår == other.lanseringsår && Objects.equals(produsent, other.produsent)
+				&& sjanger == other.sjanger && Objects.equals(tittel, other.tittel);
 	}
-	
-	
-	
 
 }

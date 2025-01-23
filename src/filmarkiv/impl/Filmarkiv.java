@@ -1,76 +1,103 @@
 package filmarkiv.impl;
-import java.util.Arrays;
 
-public abstract class Filmarkiv implements filmarkiv.adt.FilmarkivADT {
-	
-	
-	public Film[] filmer;
+import java.util.Arrays;
+import filmarkiv.adt.FilmarkivADT;
+
+public class Filmarkiv implements FilmarkivADT {
+
 	private int antall;
-	
-	
-	public Filmarkiv(int kapasitet) {
-		filmer = new Film[kapasitet];
+	private Film[] filmer;
+
+	public Filmarkiv(int antall) {
+		filmer = new Film[antall];
 		antall = 0;
-		
 	}
-	
+
 	@Override
-	public Film finnFilm(int filmNr) {
-		for(int i = 0; i < antall; i++) {
-			if(filmer[i].getFilmNr() == filmNr) {
+	public Film finnFilm(int nr) {
+		for (int i = 0; i < antall; i++) {
+			if (filmer[i].getFilmnr() == nr) {
+				System.out.print("Fant film");
 				return filmer[i];
 			}
 		}
 		return null;
-		
 	}
-	
-	void leggTillFilm(Film nyFilm) {
-		 if (antall == filmer.length) {
-			 
-	        }
-	        filmer[antall] = nyFilm;
-	        antall++;
-	}
-	
-	
+
 	@Override
-    public boolean slettFilm(int filmnr) {
-        for (int i = 0; i < antall; i++) {
-            if (filmer[i].getFilmNr() == filmnr) {
-                filmer[i] = filmer[antall - 1]; 
-                filmer[antall - 1] = null; 
-                antall--;
-                return true;
-            }
-        }
-        return false; 
-    }
-	
-	public Film[] soekTittel(String filmTittel) {
-		Film[] resultat = new Film[antall];
-		int treff = 0;
-		for(int i = 0; i < filmer.length; i++) {
-			
-			if(filmer[i].getFilmTittel().contains(filmTittel)) {
-				resultat[treff++] = filmer[i];
-				
-				return resultat;
-			}
-			return null;
-			
+	public void leggTilFilm(Film nyFilm) {
+		if (antall == filmer.length) {
+			fultArkiv();
 		}
-		return resultat;
-		
-		
+		filmer[antall] = nyFilm;
+		antall++;
 	}
 
-	
+	@Override
+	public boolean slettFilm(int filmnr) {
+		for (int i = 0; i < antall; i++) {
+			if (filmer[i].getFilmnr() == filmnr) {
+				filmer[i] = filmer[antall - 1];
+				filmer[antall - 1] = null;
+				antall--;
+				return true;
+			}
+		}
+		return false;
+	}
 
+	@Override
+	public Film[] soekTittel(String tittel) {
+		Film[] funnet = new Film[antall];
+		int funnetAntall = 0;
+		for (int i = 0; i < antall; i++) {
+			if (filmer[i].getTittel().toLowerCase().contains(tittel.toLowerCase())) {
+				funnet[funnetAntall++] = filmer[i];
+			}
+		}
+		return trimTabell(funnet, funnetAntall);
+	}
 
-	
-	
-	
-	
+	@Override
+	public Film[] soekProdusent(String produsent) {
+		Film[] funnet = new Film[antall];
+		int funnetAntall = 0;
+		for (int i = 0; i < antall; i++) {
+			if (filmer[i].getProdusent().toLowerCase().contains(produsent.toLowerCase())) {
+				funnet[funnetAntall++] = filmer[i];
+			}
+		}
+		return trimTabell(funnet, funnetAntall);
+	}
+
+	@Override
+	public int antall(Sjanger sjanger) {
+		int antallSjanger = 0;
+		for (int i = 0; i < antall; i++) {
+			if (filmer[i].getSjanger() == sjanger) {
+				antallSjanger++;
+			}
+		}
+		return antallSjanger;
+	}
+
+	@Override
+	public int antall() {
+		return antall;
+	}
+
+	public void fultArkiv() {
+
+		Film[] nyTabell = new Film[filmer.length * 2];
+		for (int i = 0; i < antall; i++) {
+			nyTabell[i] = filmer[i];
+		}
+		filmer = nyTabell;
+
+	}
+
+	private Film[] trimTabell(Film[] tabell, int lengde) {
+		return Arrays.copyOf(tabell, lengde);
+	}
 
 }
