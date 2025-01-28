@@ -12,6 +12,4 @@ public enum Sjanger {
 		return null;
 	}
 
-	Sjanger[] sjangTab = Sjanger.values();
-	int lengde = Sjanger.values().length;
 }

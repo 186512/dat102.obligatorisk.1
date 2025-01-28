@@ -44,7 +44,7 @@ public class Film {
 		this.filmnr = filmnr;
 	}
 
-	public String getprodusent() {
+	public String getProdusent() {
 		return produsent;
 	}
 
@@ -52,19 +52,19 @@ public class Film {
 		this.produsent = produsent;
 	}
 
-	public String gettittel() {
+	public String getTittel() {
 		return tittel;
 	}
 
-	public void settittel(String tittel) {
+	public void setTittel(String tittel) {
 		this.tittel = tittel;
 	}
 
-	public int getlanseringsår() {
+	public int getLanseringsår() {
 		return lanseringsår;
 	}
 
-	public void setlanseringsår(int lanseringsår) {
+	public void setLanseringsår(int lanseringsår) {
 		this.lanseringsår = lanseringsår;
 	}
 

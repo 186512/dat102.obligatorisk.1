@@ -52,7 +52,7 @@ public class Filmarkiv implements FilmarkivADT {
 		Film[] funnet = new Film[antall];
 		int funnetAntall = 0;
 		for (int i = 0; i < antall; i++) {
-			if (filmer[i].gettittel().toLowerCase().contains(tittel.toLowerCase())) {
+			if (filmer[i].getTittel().toLowerCase().contains(tittel.toLowerCase())) {
 				funnet[funnetAntall++] = filmer[i];
 			}
 		}
@@ -64,7 +64,7 @@ public class Filmarkiv implements FilmarkivADT {
 		Film[] funnet = new Film[antall];
 		int funnetAntall = 0;
 		for (int i = 0; i < antall; i++) {
-			if (filmer[i].getprodusent().toLowerCase().contains(produsent.toLowerCase())) {
+			if (filmer[i].getProdusent().toLowerCase().contains(produsent.toLowerCase())) {
 				funnet[funnetAntall++] = filmer[i];
 			}
 		}
