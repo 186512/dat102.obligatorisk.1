@@ -1,15 +1,17 @@
-package filmarkiv.impl;
+package oppgave2;
 
 import java.util.Arrays;
+
 import filmarkiv.adt.FilmarkivADT;
-
-
+import filmarkiv.impl.Film;
+import filmarkiv.impl.Sjanger;
 
 public class Filmarkiv2 implements FilmarkivADT {
-
+	
 	private int antall;
+	private LinearNode<Film> start;
 	private Film[] filmer;
-
+	
 	public Filmarkiv2(int antall) {
 		filmer = new Film[antall];
 		antall = 0;
@@ -108,4 +110,6 @@ public class Filmarkiv2 implements FilmarkivADT {
 		return filmer;
 	}
 
+}
+	
 }
