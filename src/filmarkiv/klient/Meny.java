@@ -13,6 +13,7 @@ public class Meny {
 	public Meny(FilmarkivADT filmarkiv) {
 		tekstgr = new Tekstgrensesnitt();
 		this.filmarkiv = filmarkiv;
+	
 	}
 
 	public void start() {
@@ -28,8 +29,12 @@ public class Meny {
 		switch (valg) {
 		case "1":
 			Film nyFilm = tekstgr.lesFilm();
-			filmarkiv.leggTilFilm(nyFilm);
-			showMessageDialog(null, "Filmen er lagt til!");
+			if (nyFilm != null) { 
+		        filmarkiv.leggTilFilm(nyFilm);
+		        showMessageDialog(null, "Filmen er lagt til!");
+		    } else {
+		        showMessageDialog(null, "Ingen film ble opprettet.");
+		    }
 			break;
 		case "2":
 			String tittelSoek = showInputDialog("Søk etter tittel: ");

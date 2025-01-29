@@ -12,7 +12,7 @@ public class Filmarkiv implements FilmarkivADT {
 
 	public Filmarkiv(int antall) {
 		filmer = new Film[antall];
-		antall = 0;
+		this.antall = 0;
 	}
 
 	@Override
