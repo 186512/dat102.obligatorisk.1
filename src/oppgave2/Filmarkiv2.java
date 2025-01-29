@@ -16,7 +16,7 @@ public class Filmarkiv2 implements FilmarkivADT {
 		filmer = new Film[antall];
 		antall = 0;
 	}
-
+//
 	@Override
 	public Film finnFilm(int nr) {
 		for (int i = 0; i < antall; i++) {
