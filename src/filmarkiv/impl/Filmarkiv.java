@@ -4,6 +4,7 @@ import java.util.Arrays;
 import filmarkiv.adt.FilmarkivADT;
 
 
+
 public class Filmarkiv implements FilmarkivADT {
 
 	private int antall;

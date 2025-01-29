@@ -3,16 +3,15 @@ package filmarkiv.klient;
 import filmarkiv.impl.Film;
 import static javax.swing.JOptionPane.*;
 import filmarkiv.adt.FilmarkivADT;
-import filmarkiv.impl.Filmarkiv;
 import filmarkiv.impl.Sjanger;
 
 public class Tekstgrensesnitt {
 
 	public Film lesFilm() {
-		String NyFilmNr = showInputDialog("skriv inn filmnummeret");
-		String NyFilmSkaper = showInputDialog("skriv inn Filmskaperen");
-		String NyFilmTittel = showInputDialog("skriv inn filmnummeret");
-		String NyFilmLansering = showInputDialog("skriv inn Lanserings år");
+		String NyFilmNr = showInputDialog("skriv inn filmnummer: ");
+		String NyFilmSkaper = showInputDialog("Hvem er skaperen av denne filmen?: ");
+		String NyFilmTittel = showInputDialog("hva er tittelen på filmen?: ");
+		String NyFilmLansering = showInputDialog("Når har/skal filmen lanseres?: ");
 
 
 	
@@ -43,9 +42,11 @@ public class Tekstgrensesnitt {
 		
 		
 		Film nyFilm = new Film(nyttNr, NyFilmSkaper, NyFilmTittel,nylansering, nyFilmSjanger, nyFilmSelskap);
+		
 	
-	
-	return nyFilm; 
+		
+		return nyFilm;
+		
 	}
 
 	// Skriver ut en film med alle opplysninger på skjerm (husk tekst for sjanger)
