@@ -33,6 +33,7 @@ public class Filmarkiv implements FilmarkivADT {
 		}
 		filmer[antall] = nyFilm;
 		antall++;
+		System.out.println("film lagt til, nå er det " + antall + " antall filmer");
 	}
 
 	@Override

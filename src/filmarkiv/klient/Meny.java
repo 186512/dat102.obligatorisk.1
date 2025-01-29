@@ -18,13 +18,25 @@ public class Meny {
 
 	public void start() {
 		
-	
-		String valg = showInputDialog("Velg hva du vil gjøre:\n"
-				+ "1: Legge til en ny film\n"
-				+ "2: Søke etter film etter tittel\n"
-				+ "3: Søke etter film etter produsent\n"
-				+ "4: Vis statistikk\n"
-				+ "5: Avslutt");
+		Film film1 = new Film(1, "Teo", "Cool guy", 2026, Sjanger.ACTION, "MogT");
+		Film film2 = new Film(2, "Mats", "Lonely guy", 2025, Sjanger.DRAMA, "MogT");
+		Film film3 = new Film(3, "Mats og Teo", "Goofy Guys", 2027, Sjanger.COMEDY, "MogT");
+		
+		filmarkiv.leggTilFilm(film1);
+		filmarkiv.leggTilFilm(film2);
+		filmarkiv.leggTilFilm(film3);
+		
+		boolean fortsette = true;
+		
+		while (fortsette) {
+			String valg = showInputDialog("Velg hva du vil gjøre:\n"
+					+ "1: Legge til en ny film\n"
+					+ "2: Søke etter film etter tittel\n"
+					+ "3: Søke etter film etter produsent\n"
+					+ "4: Vis statistikk\n"
+					+ "5: Avslutt");
+		
+		
 					
 		switch (valg) {
 		case "1":
@@ -48,11 +60,13 @@ public class Meny {
 			tekstgr.skrivUtStatistikk(filmarkiv);
 			break;
 		case "5":
-			
-			showMessageDialog(null, "Avslutter");
+			showMessageDialog(null, "Du kan nå lukke denne siden!");
+			fortsette = false;
 			break;
 		default:
 			showMessageDialog(null, "Ugyldig valg, prøv igjen.");
+		}
+		
 		}
 		
 		

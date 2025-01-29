@@ -67,6 +67,7 @@ public class Tekstgrensesnitt {
 		        for (Film film : funnetFilmer) {
 		            skrivUtFilm(film);
 		        }
+		 
 		    } else {
 		        System.out.println("Ingen filmer funnet med den angitte delstrengen.");
 		    }
