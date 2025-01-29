@@ -1,14 +1,18 @@
 package filmarkiv.test;
 
-
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import filmarkiv.impl.Film;
 import filmarkiv.impl.Filmarkiv;
-import filmarkiv.impl.Sjanger;
+import filmarkiv.impl.Sjanger; 
+import filmarkiv.klient.Tekstgrensesnitt;
 
 public class FilmarkivTest {
     private Filmarkiv arkiv;
@@ -61,6 +65,18 @@ public class FilmarkivTest {
     public void testSlettFilmWhenFilmDoesNotExist() {
         boolean isDeleted = arkiv.slettFilm(3);
         assertFalse(isDeleted);
+    }
+    
+    @Test
+    public void testLesFilm() {
+    	 Film newFilm = arkiv.lesFilm();
+         
+        
+         arkiv.leggTilFilm(newFilm);
+
+         
+         assertNotNull(arkiv.finnFilm(3), "The film with number 3 should not be null.");
+    	
     }
    
  
