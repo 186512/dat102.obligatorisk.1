@@ -66,6 +66,7 @@ public class Tekstgrensesnitt {
 		        System.out.println("Filmer som inneholder '" + delstreng + "' i tittelen:");
 		        for (Film film : funnetFilmer) {
 		            skrivUtFilm(film);
+		            System.out.println();
 		        }
 		 
 		    } else {
