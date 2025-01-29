@@ -104,6 +104,9 @@ public class Film {
 				&& Objects.equals(tittel, other.tittel) && Objects.equals(filmselskap, other.filmselskap)
 				&& lanseringsår == other.lanseringsår && sjanger == other.sjanger;
 	}
+
+
+	
 	
 	
 	

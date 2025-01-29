@@ -6,23 +6,27 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import filmarkiv.impl.Film;
 import filmarkiv.impl.Filmarkiv;
-import filmarkiv.impl.Sjanger; 
+import filmarkiv.impl.Sjanger;
 import filmarkiv.klient.Tekstgrensesnitt;
 
 public class FilmarkivTest {
     private Filmarkiv arkiv;
+    private Tekstgrensesnitt Larkiv;
     
     @BeforeEach
     public void setUp() {
         arkiv = new Filmarkiv(5); 
         arkiv.leggTilFilm(new Film(1, "Henry Karlsen", "The Beginning", 1998, Sjanger.ACTION, "Mats AS"));
         arkiv.leggTilFilm(new Film(2, "Alice Olsen", "Adventure Time", 2005, Sjanger.DRAMA, "Nordic Films"));
-       
+        Larkiv = new Tekstgrensesnitt();
     }
 
     @Test
@@ -69,16 +73,26 @@ public class FilmarkivTest {
     
     @Test
     public void testLesFilm() {
-    	 Film newFilm = arkiv.lesFilm();
-         
-        
-         arkiv.leggTilFilm(newFilm);
-
-         
-         assertNotNull(arkiv.finnFilm(3), "The film with number 3 should not be null.");
     	
+    	String simulatedInput = "3\nJohn Doe\nMovie Title\n2025\nACTION\nStudio XYZ";
+        InputStream in = new ByteArrayInputStream(simulatedInput.getBytes());
+        System.setIn(in);  // Set the input stream to simulate user input
+
+        // Call the method to create a film
+        Film newFilm = Larkiv.lesFilm();
+
+        // Test the created film
+        assertNotNull(newFilm);
+        assertEquals(3, newFilm.getFilmnr());
+        assertEquals("John Doe", newFilm.getProdusent());
+        assertEquals("Movie Title", newFilm.getTittel());
+        assertEquals(2025, newFilm.getLanseringsår());
+        assertEquals(Sjanger.ACTION, newFilm.getSjanger());
+        assertEquals("Studio XYZ", newFilm.getFilmselskap());
     }
-   
+    	
+    
+    
  
 
         
